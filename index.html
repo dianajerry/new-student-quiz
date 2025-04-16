@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What Kind of Snail Are You?</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f4fdf8;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      color: #2b3e2f;
+    }
+    h1 {
+      text-align: center;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #ffffff;
+      border: 2px solid #a3c6b2;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #d0f1e0;
+    }
+    #result {
+      background: #e1f8e8;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 10px;
+      display: none;
+      border-left: 8px solid #4caf50;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🐌 What Kind of Snail Are You?</h1>
+
+<div id="quiz">
+  <!-- Questions will appear here -->
+</div>
+
+<div id="result"></div>
+
+<script>
+  const quizData = [
+    {
+      question: "Where do you feel most at peace on campus?",
+      options: {
+        A: "The quiet corners of the library",
+        B: "Outdoors under a tree or near a garden",
+        C: "Common rooms with snacks and couches",
+        D: "Wandering to places I’ve never been before"
+      }
+    },
+    {
+      question: "Your weekend goal is to...",
+      options: {
+        A: "Get ahead on readings (with tea, of course)",
+        B: "Have a chill nature walk or journaling sesh",
+        C: "Hang with friends, binge something, nap",
+        D: "See where the breeze takes me—spontaneity rules"
+      }
+    },
+    {
+      question: "How do you handle stress?",
+      options: {
+        A: "Make a to-do list and handle it step-by-step",
+        B: "Go for a walk or touch grass (literally)",
+        C: "Talk it out or cuddle something soft",
+        D: "Forget the plan and pivot—I adapt"
+      }
+    }
+  ];
+
+  const results = {
+    A: {
+      title: "📚 The Scholarly Snail",
+      desc: "Slow, steady, and smart. You’re thoughtful, focused, and always planning ahead. You’re the one people ask for class notes!"
+    },
+    B: {
+      title: "🌿 The Nature-Lover Snail",
+      desc: "You thrive in peaceful, grounded spaces. You help others slow down and appreciate the little things. Your vibe? Calm and collected."
+    },
+    C: {
+      title: "🛋️ The Cozy Companion Snail",
+      desc: "You’re all about comfort, community, and emotional support. People feel instantly at home when they’re around you."
+    },
+    D: {
+      title: "🎒 The Adventurous Snail",
+      desc: "You move at your own pace—but you’re going places. You’re curious, creative, and always finding new paths (even if you take the scenic route)."
+    }
+  };
+
+  const quizContainer = document.getElementById('quiz');
+  const resultContainer = document.getElementById('result');
+
+  let answerTally = { A: 0, B: 0, C: 0, D: 0 };
+  let currentQuestion = 0;
+
+  function showQuestion() {
+    quizContainer.innerHTML = "";
+    if (currentQuestion < quizData.length) {
+      const q = quizData[currentQuestion];
+      const div = document.createElement('div');
+      div.className = "question";
+      div.innerHTML = `<h3>${q.question}</h3>`;
+      for (let key in q.options) {
+        const btn = document.createElement('button');
+        btn.textContent = q.options[key];
+        btn.onclick = () => {
+          answerTally[key]++;
+          currentQuestion++;
+          showQuestion();
+        };
+        div.appendChild(btn);
+      }
+      quizContainer.appendChild(div);
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult() {
+    quizContainer.style.display = "none";
+    const topAnswer = Object.keys(answerTally).reduce((a, b) =>
+      answerTally[a] > answerTally[b] ? a : b
+    );
+    const result = results[topAnswer];
+    resultContainer.innerHTML = `<h2>${result.title}</h2><p>${result.desc}</p>`;
+    resultContainer.style.display = "block";
+  }
+
+  showQuestion();
+</script>
+
+</body>
+</html>
