@@ -2,53 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>What Kind of Snail Are You?</title>
+  <title>What Kind of Snail Will You Be?</title>
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
-      background: #f4fdf8;
+      background: #fff;
+      color: #5a0c0c;
       padding: 20px;
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
-      color: #2b3e2f;
     }
     h1 {
       text-align: center;
+      color: #b80000;
+    }
+    p.intro {
+      text-align: center;
+      font-style: italic;
+      color: #a33c3c;
+      margin-bottom: 40px;
     }
     .question {
-      margin: 20px 0;
+      margin: 30px 0;
     }
     button {
       display: block;
       width: 100%;
       margin: 10px 0;
-      padding: 12px;
+      padding: 14px;
       font-size: 16px;
       cursor: pointer;
-      background: #ffffff;
-      border: 2px solid #a3c6b2;
-      border-radius: 10px;
-      transition: background 0.3s;
+      background: #fff;
+      color: #5a0c0c;
+      border: 2px solid #d30000;
+      border-radius: 12px;
+      transition: all 0.3s ease;
     }
     button:hover {
-      background-color: #d0f1e0;
+      background-color: #ffe5e5;
     }
     #result {
-      background: #e1f8e8;
-      padding: 20px;
-      margin-top: 30px;
-      border-radius: 10px;
+      background: #fff0f0;
+      padding: 24px;
+      margin-top: 40px;
+      border-left: 6px solid #d10000;
+      border-radius: 12px;
       display: none;
-      border-left: 8px solid #4caf50;
     }
   </style>
 </head>
 <body>
 
-<h1>🐌 What Kind of Snail Are You?</h1>
+<h1>🐌 What Kind of Snail Will You Be?</h1>
+<p class="intro">Take this cozy little quiz and get a sneak peek into your future vibe at [Your School]!</p>
 
 <div id="quiz">
-  <!-- Questions will appear here -->
+  <!-- Questions will be rendered here -->
 </div>
 
 <div id="result"></div>
@@ -56,50 +65,50 @@
 <script>
   const quizData = [
     {
-      question: "Where do you feel most at peace on campus?",
+      question: "What’s your ideal study environment?",
       options: {
-        A: "The quiet corners of the library",
-        B: "Outdoors under a tree or near a garden",
-        C: "Common rooms with snacks and couches",
-        D: "Wandering to places I’ve never been before"
+        A: "A quiet library corner with natural light",
+        B: "Outside under a tree with a breeze",
+        C: "A cozy common space with snacks and soft music",
+        D: "A mix of cafes and new spots—gotta keep it fresh"
       }
     },
     {
-      question: "Your weekend goal is to...",
+      question: "You’re arriving on campus for the first time. What do you do first?",
       options: {
-        A: "Get ahead on readings (with tea, of course)",
-        B: "Have a chill nature walk or journaling sesh",
-        C: "Hang with friends, binge something, nap",
-        D: "See where the breeze takes me—spontaneity rules"
+        A: "Unpack, organize, and plan my schedule",
+        B: "Find the botanical garden or nature trail",
+        C: "Introduce myself to people on my floor",
+        D: "Wander around and explore everything"
       }
     },
     {
-      question: "How do you handle stress?",
+      question: "When you imagine college life, you picture...",
       options: {
-        A: "Make a to-do list and handle it step-by-step",
-        B: "Go for a walk or touch grass (literally)",
-        C: "Talk it out or cuddle something soft",
-        D: "Forget the plan and pivot—I adapt"
+        A: "Deep focus, inspiring professors, and academic goals",
+        B: "A balance of learning and peace in a beautiful setting",
+        C: "Late-night chats, new friendships, and shared snacks",
+        D: "Spontaneous adventures, clubs, and personal growth"
       }
     }
   ];
 
   const results = {
     A: {
-      title: "📚 The Scholarly Snail",
-      desc: "Slow, steady, and smart. You’re thoughtful, focused, and always planning ahead. You’re the one people ask for class notes!"
+      title: "📘 The Scholarly Snail",
+      desc: "You're all about curiosity and growth. You’ll thrive in study spaces, connect with professors, and dive deep into your passions—slow and steady brilliance."
     },
     B: {
-      title: "🌿 The Nature-Lover Snail",
-      desc: "You thrive in peaceful, grounded spaces. You help others slow down and appreciate the little things. Your vibe? Calm and collected."
+      title: "🌱 The Grounded Snail",
+      desc: "You find beauty in balance. You’ll feel at home surrounded by nature, reflective moments, and the kind of calm that inspires thoughtful action."
     },
     C: {
-      title: "🛋️ The Cozy Companion Snail",
-      desc: "You’re all about comfort, community, and emotional support. People feel instantly at home when they’re around you."
+      title: "💞 The Cozy Community Snail",
+      desc: "You’re the future heart of your dorm. You’ll build deep friendships, host movie nights, and make everyone feel welcome—community is your shell."
     },
     D: {
-      title: "🎒 The Adventurous Snail",
-      desc: "You move at your own pace—but you’re going places. You’re curious, creative, and always finding new paths (even if you take the scenic route)."
+      title: "🌟 The Adventurous Snail",
+      desc: "You’re ready to explore every corner of campus and beyond. You'll try new things, meet all kinds of people, and leave your own unique trail."
     }
   };
 
