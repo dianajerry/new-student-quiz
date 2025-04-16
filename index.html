@@ -60,6 +60,15 @@
       border-radius: 12px;
       display: none;
     }
+    .share-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .share-button {
+      width: 48%;
+      display: inline-block;
+      margin: 5px;
+    }
   </style>
 </head>
 <body>
@@ -77,6 +86,12 @@
 <!-- Results Section -->
 <div id="result"></div>
 
+<!-- Share and Retake Section -->
+<div class="share-container" id="share-container" style="display:none;">
+  <button class="share-button" id="shareTextBtn">Share Results via Text</button>
+  <button class="share-button" id="retakeBtn">Retake the Quiz</button>
+</div>
+  
 <script>
   const quizData = [
     {
@@ -129,7 +144,8 @@
 
   const quizContainer = document.getElementById('quiz');
   const resultContainer = document.getElementById('result');
-
+  const shareContainer = document.getElementById('share-container');
+  
   let answerTally = { A: 0, B: 0, C: 0, D: 0 };
   let currentQuestion = 0;
 
@@ -156,6 +172,7 @@
     }
   }
 
+  
   function showResult() {
     quizContainer.style.display = "none";
     const topAnswer = Object.keys(answerTally).reduce((a, b) =>
@@ -164,7 +181,25 @@
     const result = results[topAnswer];
     resultContainer.innerHTML = `<h2>${result.title}</h2><p>${result.desc}</p>`;
     resultContainer.style.display = "block";
+    shareContainer.style.display = "block";
   }
+
+  // Share results via Text (using mailto)
+  document.getElementById('shareTextBtn').onclick = function () {
+    const resultText = resultContainer.innerText;
+    const quizLink = "https://your-quiz-link.com";  // Replace with your actual quiz URL
+    const mailtoLink = `mailto:?subject=Check out my quiz result!&body=I took the "What Kind of Snail Will You Be?" quiz! Here are my results: %0A%0A${resultText}%0A%0A You can take the quiz too: ${quizLink}`;
+    window.location.href = mailtoLink;
+  };
+  
+   // Retake the quiz
+  document.getElementById('retakeBtn').onclick = function () {
+    answerTally = { A: 0, B: 0, C: 0, D: 0 };
+    currentQuestion = 0;
+    resultContainer.style.display = "none";
+    shareContainer.style.display = "none";
+    showQuestion();
+  };
 
   showQuestion();
 </script>
