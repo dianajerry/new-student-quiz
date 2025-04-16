@@ -60,20 +60,6 @@
       border-radius: 12px;
       display: none;
     }
-    .share-button {
-      background-color: #1DA1F2;
-      color: #fff;
-      text-align: center;
-      padding: 12px;
-      border-radius: 10px;
-      text-decoration: none;
-      display: block;
-      width: 100%;
-      margin-top: 20px;
-    }
-    .share-button:hover {
-      background-color: #0d8cff;
-    }
   </style>
 </head>
 <body>
@@ -82,7 +68,7 @@
 <div class="header">
   <img src="https://example.com/snail-logo.png" alt="Snail Logo"> <!-- Replace with your actual logo URL -->
   <h1>🐌 What Kind of Snail Will You Be?</h1>
-  <p class="intro">Take this cozy little quiz and get a sneak peek into your future vibe at Madeira School!</p>
+  <p class="intro">Take this cozy little quiz and get a sneak peek into your future vibe at Madeira!</p>
 </div>
 
 <!-- Quiz Content -->
@@ -90,11 +76,6 @@
 
 <!-- Results Section -->
 <div id="result"></div>
-
-<!-- Twitter Share Button -->
-<div id="share">
-  <a href="#" class="share-button" id="shareBtn">Share Your Result on Twitter</a>
-</div>
 
 <script>
   const quizData = [
@@ -108,21 +89,21 @@
       }
     },
     {
-      question: "You’re arriving on campus for the first time. What do you do first?",
+      question: "How do you like to spend your weekends?",
       options: {
-        A: "Unpack, organize, and plan my schedule",
-        B: "Find the botanical garden or nature trail",
-        C: "Introduce myself to people on my floor",
-        D: "Wander around and explore everything"
+        A: "Catching up on assignments and reading",
+        B: "Spending time outside and exploring nature",
+        C: "Hanging out with friends and doing group activities",
+        D: "Trying new things and having spontaneous adventures"
       }
     },
     {
-      question: "When you imagine college life, you picture...",
+      question: "What’s your favorite way to relax after a long day?",
       options: {
-        A: "Deep focus, inspiring professors, and academic goals",
-        B: "A balance of learning and peace in a beautiful setting",
-        C: "Late-night chats, new friendships, and shared snacks",
-        D: "Spontaneous adventures, clubs, and personal growth"
+        A: "A quiet evening with a good book or movie",
+        B: "A peaceful walk or time spent outdoors",
+        C: "Chatting with friends over snacks",
+        D: "Exploring new places or trying something new"
       }
     }
   ];
@@ -130,25 +111,24 @@
   const results = {
     A: {
       title: "📘 The Scholarly Snail",
-      desc: "You're all about curiosity and growth. You’ll thrive in study spaces, connect with professors, and dive deep into your passions—slow and steady brilliance."
+      desc: "You're all about curiosity and growth. You’ll thrive in study spaces, connect with teachers, and dive deep into your passions through our challenging academics program."
     },
     B: {
       title: "🌱 The Grounded Snail",
-      desc: "You find beauty in balance. You’ll feel at home surrounded by nature, reflective moments, and the kind of calm that inspires thoughtful action."
+      desc: "You find beauty in balance. You’ll feel at home surrounded by nature on our beautiful campus, with lots of reflective moments and the kind of calm that inspires thoughtful action."
     },
     C: {
       title: "💞 The Cozy Community Snail",
-      desc: "You’re the future heart of your dorm. You’ll build deep friendships, host movie nights, and make everyone feel welcome—community is your shell."
+      desc: "You’re the future heart of Red-and-White Spirit. You’ll build deep friendships, host movie nights, and make everyone feel welcome — community is your shell."
     },
     D: {
       title: "🌟 The Adventurous Snail",
-      desc: "You’re ready to explore every corner of campus and beyond. You'll try new things, meet all kinds of people, and leave your own unique trail."
+      desc: "You’re ready to explore everything! You'll try new things, meet all kinds of people, and leave your own unique trail."
     }
   };
 
   const quizContainer = document.getElementById('quiz');
   const resultContainer = document.getElementById('result');
-  const shareButton = document.getElementById('shareBtn');
 
   let answerTally = { A: 0, B: 0, C: 0, D: 0 };
   let currentQuestion = 0;
@@ -184,8 +164,6 @@
     const result = results[topAnswer];
     resultContainer.innerHTML = `<h2>${result.title}</h2><p>${result.desc}</p>`;
     resultContainer.style.display = "block";
-    shareButton.href = `https://twitter.com/intent/tweet?text=I%20am%20the%20${result.title}%20at%20Madeira%20School%20-%20${result.desc}%20#MadeiraSnailQuiz`;
-    shareButton.style.display = "block";
   }
 
   showQuestion();
@@ -193,4 +171,3 @@
 
 </body>
 </html>
-
