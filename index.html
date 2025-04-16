@@ -187,7 +187,7 @@
   // Share results via Text (using mailto)
   document.getElementById('shareTextBtn').onclick = function () {
     const resultText = resultContainer.innerText;
-    const quizLink = "https://your-quiz-link.com";  // Replace with your actual quiz URL
+    const quizLink = "https://dianajerry.github.io/new-student-quiz/";
     const mailtoLink = `mailto:?subject=Check out my quiz result!&body=I took the "What Kind of Snail Will You Be?" quiz! Here are my results: %0A%0A${resultText}%0A%0A You can take the quiz too: ${quizLink}`;
     window.location.href = mailtoLink;
   };
