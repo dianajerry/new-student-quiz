@@ -200,12 +200,18 @@ document.getElementById('shareTextBtn').onclick = function () {
   
    // Retake the quiz
   document.getElementById('retakeBtn').onclick = function () {
-    answerTally = { A: 0, B: 0, C: 0, D: 0 };
-    currentQuestion = 0;
-    resultContainer.style.display = "none";
-    shareContainer.style.display = "none";
-    showQuestion();
-  };
+  // Reset the answer tally and question counter
+  answerTally = { A: 0, B: 0, C: 0, D: 0 };
+  currentQuestion = 0;
+  
+  // Hide the result and share options
+  resultContainer.style.display = "none";
+  shareContainer.style.display = "none";
+  
+  // Show the first question again
+  quizContainer.style.display = "block";
+  showQuestion();  // This will reload the first question
+};
 
   showQuestion();
 </script>
