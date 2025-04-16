@@ -194,7 +194,7 @@ document.getElementById('shareTextBtn').onclick = function () {
   const resultWithSpacing = formattedResult.split(' ').join('%20'); // Replace spaces with encoded space
 
   // Create the mailto link with correct spacing
-  const mailtoLink = `mailto:?subject=Check out my quiz result!&body=I took the "What Kind of Snail Will You Be?" quiz!%0A%0A${resultWithSpacing}%0A%0A You can take the quiz too: ${quizLink}`;
+  const mailtoLink = `mailto:?subject=Check out my quiz result!&body=I took the Madeira School's "What Kind of Snail Will You Be?" quiz!%0A%0A${resultWithSpacing}%0A%0A You can take the quiz too: ${quizLink}`;
   window.location.href = mailtoLink;
 };
   
