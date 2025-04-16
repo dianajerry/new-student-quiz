@@ -88,7 +88,7 @@
 
 <!-- Share and Retake Section -->
 <div class="share-container" id="share-container" style="display:none;">
-  <button class="share-button" id="shareTextBtn">Share Results via Text</button>
+  <button class="share-button" id="shareTextBtn">Share Results via Email</button>
   <button class="share-button" id="retakeBtn">Retake the Quiz</button>
 </div>
   
@@ -184,13 +184,19 @@
     shareContainer.style.display = "block";
   }
 
-  // Share results via Text (using mailto)
-  document.getElementById('shareTextBtn').onclick = function () {
-    const resultText = resultContainer.innerText;
-    const quizLink = "https://dianajerry.github.io/new-student-quiz/";
-    const mailtoLink = `mailto:?subject=Check out my quiz result!&body=I took the "What Kind of Snail Will You Be?" quiz! Here are my results: %0A%0A${resultText}%0A%0A You can take the quiz too: ${quizLink}`;
-    window.location.href = mailtoLink;
-  };
+  // Share results via email
+document.getElementById('shareTextBtn').onclick = function () {
+  const resultText = resultContainer.innerText;
+  const quizLink = "https://dianajerry.github.io/new-student-quiz/";  // Replace with your actual quiz URL
+  
+  // Add a space or a newline explicitly between the result title and description
+  const formattedResult = resultText.replace(/\n/g, '%0A'); // Ensure line breaks in URL encoding
+  const resultWithSpacing = formattedResult.split(' ').join('%20'); // Replace spaces with encoded space
+
+  // Create the mailto link with correct spacing
+  const mailtoLink = `mailto:?subject=Check out my quiz result!&body=I took the "What Kind of Snail Will You Be?" quiz!%0A%0A${resultWithSpacing}%0A%0A You can take the quiz too: ${quizLink}`;
+  window.location.href = mailtoLink;
+};
   
    // Retake the quiz
   document.getElementById('retakeBtn').onclick = function () {
